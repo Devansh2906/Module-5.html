@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Specials</title>
+</head>
+<body>
+    <h1>Welcome to Our Restaurant!</h1>
+    <div>
+        <!-- Menu Tile -->
+        <a href="#" onclick="$dc.loadMenuItems('MENU');">Menu</a>
+
+        <!-- Specials Tile -->
+        <a href="#" id="specials-link">Specials</a>
+
+        <!-- Map Tile -->
+        <a href="#" onclick="$dc.showMap();">Map</a>
+    </div>
+
+    <script>
+        // Array of available category short names
+        const categories = ['Lunch', 'Dinner', 'Sushi', 'Desserts', 'Beverages'];
+
+        // Function to get a random category short name
+        function getRandomCategory() {
+            const randomIndex = Math.floor(Math.random() * categories.length);
+            return categories[randomIndex];
+        }
+
+        // Dynamically update the Specials link
+        document.getElementById('specials-link').setAttribute(
+            'onclick',
+            `$dc.loadMenuItems('${getRandomCategory()}');`
+        );
+
+        // Simulated loadMenuItems function
+        const $dc = {
+            loadMenuItems: function (categoryShortName) {
+                alert(`Loading menu items for category: ${categoryShortName}`);
+                // Logic to load and display the menu items for the given category
+            },
+            showMap: function () {
+                alert('Showing map!');
+            }
+        };
+    </script>
+</body>
+</html>
